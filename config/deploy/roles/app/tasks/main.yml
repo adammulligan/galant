@@ -8,3 +8,7 @@
 
 - name: npm install pm2
   npm: name=pm2 global=yes
+
+- name: start app
+  shell: pm2 restart app.js
+    chdir={{app.dir}}

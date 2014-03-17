@@ -11,3 +11,5 @@
   roles:
     - elasticsearch
     - couchdb
+    - nodejs
+    - app

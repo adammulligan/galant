@@ -1,0 +1,28 @@
+{
+  "name": "Bookshelf",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "async": "~0.2.10",
+    "bcrypt-nodejs": "~0.0.3",
+    "cheerio": "~0.13.1",
+    "connect-assets": "~2.5.4",
+    "express": "~3.4.8",
+    "express-flash": "~0.0.2",
+    "express-validator": "~1.0.1",
+    "fbgraph": "~0.2.9",
+    "github-api": "~0.7.0",
+    "jade": "~1.1.5",
+    "less": "~1.6.3",
+    "mongoose": "~3.8.7",
+    "nodemailer": "~0.6.0",
+    "passport": "~0.2.0",
+    "passport-local": "~0.1.6",
+    "request": "~2.33.0",
+    "underscore": "~1.6.0",
+    "connect-mongo": "~0.4.0",
+    "validator": "~3.2.1"
+  }
+}

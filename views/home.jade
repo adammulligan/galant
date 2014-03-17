@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  #shelf
+    each book in books
+      .item
+        .book-thumb
+          img(src="#{book.thumbnail}")
+        p= book.name

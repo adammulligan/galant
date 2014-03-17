@@ -1,0 +1,20 @@
+couchdb_src: "/home/couchdb/src/couchdb"
+couchdb_dest: "/home/couchdb/opt/couchdb"
+couchdb_repo: "git://github.com/apache/couchdb.git"
+
+app:
+  repo_url: 'http://github.com/adammulligan/galant.git'
+  dir: '/var/www/galant'
+
+elasticsearch:
+  url: 'http://download.elasticsearch.org/elasticsearch/elasticsearch'
+  deb:
+    package: 'elasticsearch-1.0.1.deb'
+    service: 'elasticsearch'
+    dependencies:
+      - 'openjdk-6-jre'
+      - 'openjdk-6-jdk'
+  plugin: '/usr/share/elasticsearch/bin/plugin'
+  config: '/etc/elasticsearch/elasticsearch.yml'
+
+  tmp: '/tmp'

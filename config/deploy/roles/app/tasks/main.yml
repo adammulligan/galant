@@ -1,0 +1,10 @@
+---
+
+- name: Clone repo
+  git: repo={{ app.repo_url }} dest={{ app.dir }}
+
+- name: npm install
+  npm: path={{app.dir}}
+
+- name: npm install pm2
+  npm: name=pm2 global=yes

@@ -1,0 +1,18 @@
+---
+
+# Install Elasticsearch dependencies
+- name: "Install Elasticsearch dependencies"
+  apt: name={{ item }} state=installed
+  with_items: elasticsearch.deb.dependencies
+
+# Fetch Elasticsearch Debian package
+- name: "Fetch Elasticsearch"
+  get_url: url={{ elasticsearch.url }}/{{ elasticsearch.deb.package }} dest={{ elasticsearch.tmp }} thirsty=yes mode=0440
+
+# Install Elasticsearch
+- name: "Install Elasticsearch package"
+  action: shell dpkg -i -E --force-confnew {{ elasticsearch.tmp }}/{{ elasticsearch.deb.package }} 2>&1 | grep skipping | wc -l
+
+# Ensure Elasticsearch is running
+- name: "Ensure Elasticsearch is running"
+  service: name={{ elasticsearch.deb.service }} state=started

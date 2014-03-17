@@ -1,0 +1,2 @@
+- name: start couchdb
+  service: name=couchdb state=started

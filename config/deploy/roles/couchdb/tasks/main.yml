@@ -1,0 +1,11 @@
+---
+
+- name: Install couchdb deps
+  apt: name=python-software-properties
+
+- name: Add couch ppa
+  apt_repository: repo="ppa:couchdb/stable"
+
+- name: Install couchdb
+  apt: name=couchdb
+  notify: start couchdb

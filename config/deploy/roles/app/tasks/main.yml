@@ -10,5 +10,9 @@
   npm: name=pm2 global=yes
 
 - name: start app
-  shell: pm2 restart app.js
+  shell: PORT=8004 npm run production
+    chdir={{app.dir}}
+
+- name: start app when system boots
+  shell: pm2 startup ubuntu
     chdir={{app.dir}}

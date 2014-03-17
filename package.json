@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "node app.js",
+    "production": "NODE_ENV=production pm2 restart app.js --name galant",
     "deploy": "cd config/deploy && ansible-playbook -i hosts site.yml"
   },
   "dependencies": {

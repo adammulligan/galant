@@ -2,7 +2,8 @@
   "name": "Bookshelf",
   "version": "0.0.0",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "deploy": "cd config/deploy && ansible-playbook -i hosts site.yml"
   },
   "dependencies": {
     "async": "~0.2.10",

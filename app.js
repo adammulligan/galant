@@ -3,11 +3,8 @@
  */
 
 var express = require('express');
-var MongoStore = require('connect-mongo')(express);
 var flash = require('express-flash');
 var path = require('path');
-var mongoose = require('mongoose');
-var passport = require('passport');
 var expressValidator = require('express-validator');
 
 /**
@@ -15,7 +12,6 @@ var expressValidator = require('express-validator');
  */
 
 var homeController = require('./controllers/home');
-var userController = require('./controllers/user');
 var contactController = require('./controllers/contact');
 
 /**
@@ -23,22 +19,12 @@ var contactController = require('./controllers/contact');
  */
 
 var secrets = require('./config/secrets');
-var passportConf = require('./config/passport');
 
 /**
  * Create Express server.
  */
 
 var app = express();
-
-/**
- * Mongoose configuration.
- */
-
-mongoose.connect(secrets.db);
-mongoose.connection.on('error', function() {
-  console.error('✗ MongoDB Connection Error. Please make sure MongoDB is running.');
-});
 
 /**
  * Express configuration.
@@ -65,17 +51,10 @@ app.use(express.urlencoded());
 app.use(expressValidator());
 app.use(express.methodOverride());
 app.use(express.session({
-  secret: secrets.sessionSecret,
-  store: new MongoStore({
-    db: mongoose.connection.db,
-    auto_reconnect: true
-  })
+  secret: secrets.sessionSecret
 }));
 app.use(express.csrf());
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(function(req, res, next) {
-  res.locals.user = req.user;
   res.locals.token = req.csrfToken();
   res.locals.secrets = secrets;
   next();
@@ -93,18 +72,9 @@ app.use(express.errorHandler());
  * Application routes.
  */
 
-app.get('/', passportConf.isAuthenticated, homeController.index);
-app.get('/login', userController.getLogin);
-app.post('/login', userController.postLogin);
-app.get('/logout', userController.logout);
-app.get('/signup', userController.getSignup);
-app.post('/signup', userController.postSignup);
+app.get('/', homeController.index);
 app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
-app.get('/account', passportConf.isAuthenticated, userController.getAccount);
-app.post('/account/profile', passportConf.isAuthenticated, userController.postUpdateProfile);
-app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
-app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 
 /**
  * Start Express server.

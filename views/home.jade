@@ -5,6 +5,7 @@ block content
     each book in books
       .item
         .book-thumb
-          img(src="#{book.thumbnail}")
+          a(href="/book/"+book._id)
+            img(src="#{book.thumbnail}")
         p
           a(href="/book/"+book._id)= book.name

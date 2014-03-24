@@ -1,18 +1,13 @@
 module.exports = {
-  db: 'localhost',
+  db: {
+    views: {
+      books: {
+        all: 'http://localhost:5984/books/_design/books/_view/all'
+      }
+    }
+  },
 
   bookDir: '/Users/adammulligan/cloud/Dropbox/eBooks',
 
-  localAuth: true,
-  sessionSecret: "Your Session Secret goes here",
-
-  mailgun: {
-    login: 'Your Mailgun SMTP Username',
-    password: 'Your Mailgun SMTP Password'
-  },
-
-  sendgrid: {
-    user: 'Your SendGrid Username',
-    password: 'Your SendGrid Password'
-  },
+  sessionSecret: "Your Session Secret goes here"
 };

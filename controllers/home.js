@@ -7,7 +7,7 @@ _ = require('underscore');
  */
 
 exports.index = function(req, res) {
-  booksUrl = "http://localhost:5984/books/_design/books/_view/all";
+  booksUrl = res.locals.secrets.db.views.books.all;
   request(booksUrl, function (err, response, body) {
     bodyJSON = JSON.parse(body);
     books = _.map(bodyJSON.rows, function(row) { return row.value; });

@@ -16,3 +16,10 @@
 - name: start app when system boots
   shell: pm2 startup ubuntu
     chdir={{app.dir}}
+
+- name: setup nginx conf
+  template: src=galant.nginx.j2 dest=/etc/nginx/sites-available/galant
+- name: Enable nginx config
+  file: src=/etc/nginx/sites-available/galant dest=/etc/nginx/sites-enabled/galant state=link
+  notify:
+    - restart nginx

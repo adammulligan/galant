@@ -7,6 +7,12 @@ module.exports = {
     }
   },
 
+  elasticsearch: {
+    host: 'localhost',
+    port: 9200,
+    secure: false
+  },
+
   bookDir: '/Users/adammulligan/cloud/Dropbox/eBooks',
 
   sessionSecret: "Your Session Secret goes here"

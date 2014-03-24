@@ -13,6 +13,7 @@ var expressValidator = require('express-validator');
 
 var homeController = require('./controllers/home');
 var bookController = require('./controllers/book');
+var searchController = require('./controllers/search');
 
 /**
  * API keys + Passport configuration.
@@ -74,6 +75,7 @@ app.use(express.errorHandler());
 
 app.get('/', homeController.index);
 app.get('/book/:id', bookController.show);
+app.get('/search', searchController.index);
 
 /**
  * Start Express server.

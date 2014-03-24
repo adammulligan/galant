@@ -25,6 +25,7 @@
     "request": "~2.33.0",
     "underscore": "~1.6.0",
     "connect-mongo": "~0.4.0",
-    "validator": "~3.2.1"
+    "validator": "~3.2.1",
+    "elasticsearchclient": "^0.5.3"
   }
 }

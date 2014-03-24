@@ -6,4 +6,5 @@ block content
       .item
         .book-thumb
           img(src="#{book.thumbnail}")
-        p= book.name
+        p
+          a(href="/book/"+book._id)= book.name

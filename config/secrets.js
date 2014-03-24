@@ -1,6 +1,8 @@
 module.exports = {
   db: 'localhost',
 
+  bookDir: '/Users/adammulligan/cloud/Dropbox/eBooks',
+
   localAuth: true,
   sessionSecret: "Your Session Secret goes here",
 

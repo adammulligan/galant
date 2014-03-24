@@ -12,6 +12,7 @@ var expressValidator = require('express-validator');
  */
 
 var homeController = require('./controllers/home');
+var bookController = require('./controllers/book');
 var contactController = require('./controllers/contact');
 
 /**
@@ -73,6 +74,7 @@ app.use(express.errorHandler());
  */
 
 app.get('/', homeController.index);
+app.get('/book/:id', bookController.show);
 app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
 

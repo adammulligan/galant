@@ -2,7 +2,7 @@
   "name": "Bookshelf",
   "version": "0.0.0",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "production": "pm2 stop galant && NODE_ENV=production pm2 start app.js --name galant",
     "deploy": "cd config/deploy && ansible-playbook -i hosts site.yml"
   },

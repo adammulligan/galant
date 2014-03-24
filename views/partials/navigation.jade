@@ -11,3 +11,6 @@
       ul.nav.navbar-nav
         li(class=title=='Home'?'active':undefined)
           a(href='/') Home
+      ul.nav.navbar-nav.navbar-right
+        form(action='/search',method='get')
+          input(name='query',type='text')

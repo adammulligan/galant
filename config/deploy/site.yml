@@ -2,11 +2,8 @@
 
 - name: Deploy Galant
   hosts: web
-  user: root
-
-  pre_tasks:
-    - name: update apt if needed
-      apt: update_cache=yes cache_valid_time=3600
+  user: adam
+  sudo: yes
 
   roles:
     - elasticsearch

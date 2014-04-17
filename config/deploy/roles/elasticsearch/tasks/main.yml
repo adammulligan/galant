@@ -16,3 +16,11 @@
 # Ensure Elasticsearch is running
 - name: "Ensure Elasticsearch is running"
   service: name={{ elasticsearch.deb.service }} state=started
+
+# Install CouchDB River
+- name: "Install CouchDB River plugin"
+  shell: /usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-river-couchdb/1.2.0
+  ignore_errors: yes
+
+- name: "Setup CouchDB River Index"
+  shell: "curl -X PUT '127.0.0.1:9200/_river/books/_meta' -d '{ \"type\" : \"couchdb\", \"couchdb\" : { \"host\" : \"localhost\", \"port\" : 5984, \"db\" : \"books\", \"filter\" : null }, \"index\" : { \"index\" : \"books\", \"type\" : \"books\", \"bulk_size\" : \"100\", \"bulk_timeout\" : \"10ms\" } }'"

@@ -11,6 +11,8 @@
       ul.nav.navbar-nav
         li(class=title=='Home'?'active':undefined)
           a(href='/') Home
-      ul.nav.navbar-nav.navbar-right
-        form(action='/search',method='get')
-          input(name='query',type='text')
+        li(class=title=='Add'?'active':undefined)
+          a(href='/book/new') Add
+      form.navbar-right.navbar-form(action='/search',method='get')
+        .form-group
+          input.form-control(name='query',type='text',placeholder='Search')

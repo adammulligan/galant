@@ -1,6 +1,10 @@
 request = require('request');
 path    = require('path');
 
+exports.new = function(req, res) {
+  res.render('books/new', {title: 'Add book'});
+};
+
 exports.show = function(req, res) {
   bookUrl = res.locals.secrets.db.views.books.all + '?key="'+req.params.id+'"';
 

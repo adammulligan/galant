@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-6
+      form.form-horizontal(action='/books',method='post')
+        .form-group
+          label.col-sm-3.control-label(for="title") Title
+          .col-sm-8
+            input.form-control(type="email",id="title",placeholder="The Inner Game of Tennis")
+
+        .form-group
+          label.col-sm-3.control-label(for="genre") Genre
+          .col-sm-8
+            input.form-control(type="text",id="genre",placeholder="Software Development, Fashion")
+
+        .form-group
+          label.col-sm-3.control-label(for="authors") Authors
+          .col-sm-8
+            input.form-control(type="text",id="genre",placeholder="Adam Mulligan, Tender Love")
+
+        .form-group
+          label.col-sm-3.control-label(for="book_file") Book File
+          .col-sm-8
+            input.form-control(type="file",id="book_file")
+
+        .form-group
+          .col-sm-offset-3.col-sm-8
+            button.btn.btn-default(type="submit") Add

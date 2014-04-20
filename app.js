@@ -74,8 +74,11 @@ app.use(express.errorHandler());
  */
 
 app.get('/', homeController.index);
+
 app.get('/book/new', bookController.new);
+app.post('/book', bookController.create);
 app.get('/book/:id', bookController.show);
+
 app.get('/search', searchController.index);
 
 /**

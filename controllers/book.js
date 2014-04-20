@@ -5,6 +5,41 @@ exports.new = function(req, res) {
   res.render('books/new', {title: 'Add book'});
 };
 
+var stringToArray = function(commaSeparatedString) {
+  if (commaSeparatedString === undefined) {
+    return undefined;
+  }
+
+  var splitString = commaSeparatedString.split(',');
+  return splitString.map(function(s){return s.trim();});
+};
+
+exports.create = function(req, res) {
+  console.log(req.body);
+  var title   = req.body.title,
+      genre   = stringToArray(req.body.genre),
+      authors = stringToArray(req.body.authors);
+
+  var body = {
+    title: title,
+    genre: genre,
+    authors: authors
+  };
+
+  request({
+    method: 'POST',
+    url: 'http://localhost:5984/books_development',
+    json: body
+  }, function(err, response, body) {
+    if (err) {
+      res.status(500);
+      return res.render('500');
+    }
+
+    res.render('books/new');
+  });
+};
+
 exports.show = function(req, res) {
   bookUrl = res.locals.secrets.db.views.books.all + '?key="'+req.params.id+'"';
 

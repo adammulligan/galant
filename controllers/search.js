@@ -1,6 +1,6 @@
 exports.index = function(req, res) {
-  var ElasticSearchClient = require('elasticsearchclient'),
-      elasticSearchClient = new ElasticSearchClient(res.locals.secrets.elasticsearch);
+  elasticSearchConfig = res.locals.secrets.elasticsearch;
+  elasticSearchUrl = "http://"+elasticSearchConfig.host+":"+elasticSearchConfig.port+"/_search";
 
   var query = {
     size: 500,
@@ -12,9 +12,12 @@ exports.index = function(req, res) {
     }
   };
 
-  elasticSearchClient.search('books', 'book', query, function(err, data) {
-    bodyJSON = JSON.parse(data);
-    books = _.map(bodyJSON.hits.hits, function(row) { return row._source; });
+  request.post({
+    url: elasticSearchUrl,
+    body: query,
+    json: true
+  }, function (err, response, data) {
+    books = _.map(data.hits.hits, function(row) { return row._source; });
 
     res.render('home', {
       title: 'Home',
